@@ -362,3 +362,4 @@ MonoBehaviour:
   _maxSize: 1.15
   colorChangeableRenderers:
   - {fileID: 4200091125132427978}
+  - {fileID: 8777303894750577339}

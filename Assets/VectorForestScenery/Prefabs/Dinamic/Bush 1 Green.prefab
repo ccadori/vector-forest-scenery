@@ -116,6 +116,7 @@ MonoBehaviour:
   _maxSize: 1.15
   colorChangeableRenderers:
   - {fileID: 7759292470998409812}
+  - {fileID: 7759292470576372903}
 --- !u!1 &7759292470576372953
 GameObject:
   m_ObjectHideFlags: 0
