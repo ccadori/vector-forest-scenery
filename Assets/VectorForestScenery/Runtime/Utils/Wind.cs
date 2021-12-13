@@ -7,54 +7,48 @@ namespace VectorForestScenery.Utils
 {
     public class Wind : MonoBehaviour
     {
-        private SceneryItem[] trees;
+        #region "Inspector"
+        public Scenery _scenery;
+        #endregion
 
-        public void Start()
+        public void StartWind(Vector2 origin, float velocity, float maxDistance)
         {
-            trees = GameObject.FindObjectsOfType<SceneryItem>();
-            InvokeRepeating("WindLeft", 0, 4);
+            StartCoroutine(WindCycle(origin, velocity, maxDistance));
         }
 
-        public void FixedUpdate()
+        private IEnumerator WindCycle(Vector2 origin, float velocity, float maxDistance)
         {
-            if (Input.GetMouseButtonDown(00))
+            float distanceFromOrigin = 0;
+            List<SceneryItem> alreadyInteracted = new List<SceneryItem>();
+            List<SceneryItem> items = _scenery.Items;
+
+            while (distanceFromOrigin < maxDistance && items.Count != alreadyInteracted.Count)
             {
-                WindLeft();
-            }
-            else if (Input.GetMouseButtonDown(01))
-            {
-                WindRight();
-            }
-        }
-
-        public void WindLeft()
-        {
-            StartCoroutine(WindTrees((SceneryItem tree) => tree.WindLeft()));
-        }
-
-        public void WindRight()
-        {
-            StartCoroutine(WindTrees((SceneryItem tree) => tree.WindRight()));
-        }
-
-        public IEnumerator WindTrees(Action<SceneryItem> action)
-        {
-            float currentTime = 13;
-
-            List<SceneryItem> alreadyWind = new List<SceneryItem>();
-            while (alreadyWind.Count != trees.Length)
-            {
-                currentTime -= (Time.fixedDeltaTime * 10f);
                 yield return new WaitForFixedUpdate();
+                distanceFromOrigin += (Time.fixedDeltaTime * velocity);
 
-                foreach (var tree in trees)
+                foreach (var item in items)
                 {
-                    if (!alreadyWind.Contains(tree) && tree.transform.position.x > currentTime)
+                    bool interacted = alreadyInteracted.Contains(item);
+                    bool isInsideDistance = Vector2.Distance(item.transform.position, origin) < distanceFromOrigin;
+                    if (!interacted && isInsideDistance)
                     {
-                        action.Invoke(tree);
-                        alreadyWind.Add(tree);
+                        alreadyInteracted.Add(item);
+                        WindItem(item, origin);
                     }
                 }
+            }
+        }
+
+        private void WindItem(SceneryItem item, Vector2 origin)
+        {
+            if (item.transform.position.x < origin.x)
+            {
+                item.WindLeft();
+            }
+            else
+            {
+                item.WindRight();
             }
         }
     }

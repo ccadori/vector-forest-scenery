@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,25 +5,26 @@ namespace VectorForestScenery.Utils
 {
     public class Snow : MonoBehaviour
     {
-        private SceneryItem[] sceryItems;
+        #region "Inspector"
+        public Scenery _scenery;
+        #endregion
 
-        public void Start()
+        public void SetSnow()
         {
-            sceryItems = GameObject.FindObjectsOfType<SceneryItem>();
-            StartSnow();
-        }
-
-        public void StartSnow()
-        {
-            StartCoroutine(SnowRoutine());
-        }
-
-        public IEnumerator SnowRoutine()
-        {
-            foreach (var item in sceryItems)
+            List<SceneryItem> items = _scenery.Items;
+            foreach (var item in items)
             {
-                yield return new WaitForSeconds(Random.Range(.1f, 1));
                 item.SnowOn();
+                item.Shake();
+            }
+        }
+
+        public void RemoveSnow()
+        {
+            List<SceneryItem> items = _scenery.Items;
+            foreach (var item in items)
+            {
+                item.SnowOff();
                 item.Shake();
             }
         }
