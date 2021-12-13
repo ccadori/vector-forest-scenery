@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Trees
+namespace VectorForestScenery.Utils
 {
     public class Wind : MonoBehaviour
     {
