@@ -12,5 +12,22 @@ namespace VectorForestScenery
         {
             Items = new List<SceneryItem>(GetComponentsInChildren<SceneryItem>());
         }
+
+        public void Add(Vector2 origin, SceneryItem prefab)
+        {
+            SceneryItem item = Instantiate<SceneryItem>(prefab, origin, Quaternion.identity);
+            item.transform.SetParent(transform);
+            Items.Add(item);
+        }
+
+        public void Clear()
+        {
+            foreach (var item in Items)
+            {
+                Destroy(item.gameObject);
+            }
+
+            Items.Clear();
+        }
     }
 }
