@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/VectorForestScenery/Demo/Scenes/Demo.unity
+    path: Assets/ccadori/Vector Forest Scenery/Demo/Scenes/Demo.unity
     guid: 2ceeec7d67a69e04bb1df6366e1ba942
   m_configObjects: {}
