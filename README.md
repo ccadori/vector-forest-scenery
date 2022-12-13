@@ -1,7 +1,12 @@
 # Vector Forest Scenery
------
+Vector Forest Scenery is a Unity package that helps you build your natural scenery, with minimalistic and interactive items. The package includes 30 items, including trees, bushes, and rocks.
+
+![image](./Media/sum-forest.png)
 
 ## How to use
+
+### Installing
+You can install this package with [AssetStore](https://assetstore.unity.com/packages/2d/environments/vector-forest-scenery-209180).
 
 ### Items
 
