@@ -14,7 +14,7 @@ namespace VectorForestScenery
         public SpriteRenderer[] _lightAffectedRenderers;
         #endregion
 
-        public void Start()
+        public virtual void Start()
         {
             if (_particle != null)
             {
