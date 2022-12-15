@@ -86,7 +86,6 @@ MonoBehaviour:
   _shakeOnStart: 1
   _lightAffectedRenderers:
   - {fileID: 458937735650845293}
-  - {fileID: 0}
 --- !u!1 &458937734798578800
 GameObject:
   m_ObjectHideFlags: 0

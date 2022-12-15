@@ -168,7 +168,8 @@ MonoBehaviour:
   _minSize: 0.85
   _maxSize: 1.15
   _shakeOnStart: 0
-  _lightAffectedRenderers: []
+  _lightAffectedRenderers:
+  - {fileID: 3683556190400365706}
   _randomAnimationStart: 1
 --- !u!1 &1092374789530810132
 GameObject:

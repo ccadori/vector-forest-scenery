@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1092374789140380019, guid: 6dbc249f36548f94894c7446a1b24428, type: 3}
       propertyPath: m_Name
-      value: Butterfly Blue
+      value: Butterfly Blue Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3683556190400365706, guid: 6dbc249f36548f94894c7446a1b24428, type: 3}
       propertyPath: m_Sprite
