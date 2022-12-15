@@ -16,12 +16,17 @@ namespace VectorForestScenery.Utils
 
             foreach (var item in items)
             {
-                float distanceFromOrigin = Vector2.Distance(item.transform.position, origin);
-                float distancePercentage = Mathf.InverseLerp(0, maxDistance, distanceFromOrigin);
-                float lightDecrease = Mathf.Lerp(0, maxVariation, distancePercentage);
-                var color = new Color(1 - lightDecrease, 1 - lightDecrease, 1 - lightDecrease, 1);
-                item.SetRendererColor(color);
+                SetVariation(maxVariation, origin, maxDistance, item);
             }
+        }
+
+        public void SetVariation(float maxVariation, Vector2 origin, float maxDistance, SceneryItem item)
+        {
+            float distanceFromOrigin = Vector2.Distance(item.transform.position, origin);
+            float distancePercentage = Mathf.InverseLerp(0, maxDistance, distanceFromOrigin);
+            float lightDecrease = Mathf.Lerp(0, maxVariation, distancePercentage);
+            var color = new Color(1 - lightDecrease, 1 - lightDecrease, 1 - lightDecrease, 1);
+            item.SetRendererColor(color);
         }
 
         public void RemoveVariation()
