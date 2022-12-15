@@ -81,8 +81,8 @@ MonoBehaviour:
   _particle: {fileID: 0}
   _animator: {fileID: 1342536577774315948}
   _randomizeSize: 1
-  _minSize: 0.85
-  _maxSize: 1.15
+  _minSize: 0.55
+  _maxSize: 1
   _shakeOnStart: 1
   _lightAffectedRenderers:
   - {fileID: 458937735650845293}
