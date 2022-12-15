@@ -31,6 +31,9 @@ namespace VectorForestScenery.Demo
         public SceneryItem _prefab;
         #endregion
 
+        private bool isLightVariationOn = false;
+        private Vector2 lightVariationPoint = Vector2.zero;
+
         public SceneryItem AdditionPrefab
         {
             get => _prefab;
@@ -97,6 +100,9 @@ namespace VectorForestScenery.Demo
 
         private void LightVariation(Vector2 origin, bool operation)
         {
+            isLightVariationOn = operation;
+            lightVariationPoint = origin;
+
             if (operation)
             {
                 _lightVariation.SetVariation(_maxLightVariation, origin, _maxLightDistance);
@@ -110,7 +116,11 @@ namespace VectorForestScenery.Demo
 
         private void Addition(Vector2 origin, bool operation)
         {
-            _scenery.Add(origin, _prefab);
+            SceneryItem item = _scenery.Add(origin, _prefab);
+            if (isLightVariationOn)
+            {
+                _lightVariation.SetVariation(_maxLightVariation, lightVariationPoint, _maxLightDistance, item);
+            }
         }
 
         private bool IsOverInterface()
